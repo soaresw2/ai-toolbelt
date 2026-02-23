@@ -1,4 +1,4 @@
-# Windsurf AI Rules
+# General Coding Rules
 
 ## Code Style and Quality
 
