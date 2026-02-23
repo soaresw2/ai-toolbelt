@@ -1,129 +1,230 @@
 # AI Toolbelt
 
-A comprehensive collection of portable AI agent instructions, commands, skills, and rules for modern code editors and AI-powered development tools.
+A comprehensive, editor-agnostic collection of AI agent tools organized by type: commands, skills, instructions, prompts, and rules.
 
 ## 📋 Overview
 
-This repository provides ready-to-use AI agent configurations for popular code editors. Each editor has its own folder structure with placeholder examples that you can customize for your specific needs. Simply copy the relevant folder into your project to start using AI assistance tailored to your workflow.
+AI Toolbelt provides ready-to-use templates and tools for AI-assisted development. Instead of organizing by code editor, we organize by **tool type**, making it easy to:
+
+- Find the right tool for your needs
+- Adapt tools to any AI-enabled editor
+- Understand what each tool type does
+- Mix and match tools for your workflow
+
+Simply browse by tool type, copy what you need, and adapt to your editor's format.
 
 ## 🎯 Purpose
 
 AI Toolbelt aims to:
 
-- **Standardize AI interactions** across different code editors and projects
-- **Provide reusable templates** for common development tasks
-- **Accelerate onboarding** by offering pre-configured AI behaviors
+- **Provide editor-agnostic tools** that work across different AI assistants
+- **Organize by function** (what the tool does) rather than platform (where it runs)
+- **Standardize AI interactions** with reusable, tested templates
+- **Accelerate development** with pre-built commands, skills, and guidelines
 - **Share best practices** for AI-assisted development
-- **Reduce configuration overhead** when starting new projects
+- **Enable customization** - all tools are templates you can modify
 
-## 🗂️ Supported Editors and Tools
+## 🗂️ Tool Types
 
-### Cursor
+### [Commands](./commands/) - Quick Actions
 
-Copy the `.cursor` folder to your project root to add AI commands and skills.
+Short, focused instructions for specific code operations.
 
-- **Commands** (`.cursor/commands/`): Quick actions you can invoke on selected code
-  - `write-tests.md` - Generate comprehensive unit tests
-  - `refactor-code.md` - Improve code quality and structure
-  - `add-error-handling.md` - Add robust error handling
-  - `document-code.md` - Generate code documentation
-  - `optimize-performance.md` - Optimize code performance
+**Examples:** Write tests, refactor code, add error handling, document code, optimize performance
 
-- **Skills** (`.cursor/skills/`): Specialized capabilities for the AI agent
-  - `code-review/` - Thorough code review assistance
-  - `testing/` - Comprehensive testing support
+**Best for:** One-time actions on selected code, tactical operations
 
-### GitHub Copilot (VSCode, Visual Studio, JetBrains IDEs)
+**Use in:** Cursor commands, Copilot chat requests, quick AI prompts
 
-Copy the `.github` folder to your project root for Copilot instructions.
+[→ Browse Commands](./commands/)
 
-- **Instructions** (`.github/instructions/`): Context-specific guidelines for AI behavior
-  - `acceptance.instructions.md` - Acceptance testing guidelines
-  - `code-review.instructions.md` - Code review standards
-  - `bug-fix.instructions.md` - Bug fixing methodology
-  - `feature.instructions.md` - Feature implementation approach
+---
 
-### Zed
+### [Skills](./skills/) - AI Capabilities
 
-Copy the `.zed` folder to your project root for custom AI prompts.
+Comprehensive definitions of specialized AI expertise and capabilities.
 
-- **Prompts** (`.zed/prompts/`): Custom prompt templates
-  - `explain-code.md` - Code explanation prompt
-  - `generate-tests.md` - Test generation prompt
-  - `improve-code.md` - Code quality improvement prompt
+**Examples:** Code review, testing, architecture design
 
-### Windsurf (Codeium)
+**Best for:** Complex, multi-step tasks requiring domain knowledge
 
-Copy the `windsurf` folder to your project root for AI rules.
+**Use in:** Cursor skills, persistent AI context, capability definitions
 
-- **Rules** (`.windsurfrules`): General coding principles and guidelines
-  - Code style and quality standards
-  - Testing requirements
-  - Security best practices
-  - Documentation guidelines
+[→ Browse Skills](./skills/)
 
-## 🚀 Getting Started
+---
 
-1. **Choose your editor**: Navigate to the folder for your code editor
-2. **Copy to your project**: Copy the entire folder structure to your project root
-3. **Customize**: Edit the markdown files to match your project's specific needs
-4. **Use**: Invoke commands, skills, or let instructions guide the AI's behavior
+### [Instructions](./instructions/) - Workflows
+
+Detailed, structured guidelines for complete development workflows.
+
+**Examples:** Feature implementation, bug fixing, acceptance testing, code review process
+
+**Best for:** End-to-end task guidance, team standards, quality criteria
+
+**Use in:** GitHub Copilot instructions, workflow templates, process documentation
+
+[→ Browse Instructions](./instructions/)
+
+---
+
+### [Prompts](./prompts/) - Conversation Templates
+
+Reusable templates that define AI persona and approach for specific interactions.
+
+**Examples:** Explain code, generate tests, improve code quality
+
+**Best for:** Starting AI conversations, defining AI role, chat templates
+
+**Use in:** Zed prompts, AI chat interfaces, conversation starters
+
+[→ Browse Prompts](./prompts/)
+
+---
+
+### [Rules](./rules/) - Universal Standards
+
+Fundamental principles and standards that govern all AI assistance.
+
+**Examples:** Coding standards, security requirements, best practices
+
+**Best for:** Universal constraints, baseline quality standards, security guidelines
+
+**Use in:** Cursor rules, Windsurf rules, project-wide AI guidelines
+
+[→ Browse Rules](./rules/)
+
+## 🚀 Quick Start
+
+### 1. Choose What You Need
+
+Browse the tool type folders to find what matches your needs:
+- Need a quick action? → Commands
+- Want specialized expertise? → Skills  
+- Implementing a workflow? → Instructions
+- Starting an AI chat? → Prompts
+- Setting standards? → Rules
+
+### 2. Adapt to Your Editor
+
+Each tool type's README explains how to use it in different editors. Common patterns:
+
+**Cursor:**
+- Commands → `.cursor/commands/`
+- Skills → `.cursor/skills/<name>/SKILL.md`
+- Rules → `.cursorrules`
+
+**GitHub Copilot (VSCode, JetBrains, Visual Studio):**
+- Instructions → `.github/instructions/`
+- Rules → `.github/copilot-instructions.md`
+- Commands/Prompts → Use in Copilot Chat
+
+**Zed:**
+- Prompts → `.zed/prompts/`
+- Rules → `.zed/settings.json`
+
+**Windsurf:**
+- Rules → `.windsurfrules`
+
+**Other AI Tools:**
+- Use as reference templates
+- Copy into chat interfaces
+- Adapt format as needed
+
+### 3. Customize and Use
+
+All tools are templates. Modify them to:
+- Match your team's standards
+- Fit your project's needs
+- Align with your tech stack
+- Reflect your workflow
+
+## 📚 Documentation
+
+Each tool type folder contains:
+- **README.md** - Explains the tool type, format, and usage
+- **Example files** - Templates you can use immediately
+- **Usage guide** - How to adapt for different editors
+
+## 🎨 Examples
 
 ### Example: Setting up Cursor
 
 ```bash
-# From this repository
-cp -r .cursor /path/to/your/project/
+# Copy commands
+cp ai-toolbelt/commands/*.md .cursor/commands/
 
-# Now you can use Cursor's command palette to access:
-# - Write Tests
-# - Refactor Code
-# - Add Error Handling
-# - Document Code
-# - Optimize Performance
+# Copy skills (create folder structure)
+mkdir -p .cursor/skills/code-review
+cp ai-toolbelt/skills/code-review.md .cursor/skills/code-review/SKILL.md
+
+# Copy rules
+cp ai-toolbelt/rules/general-coding-rules.md .cursorrules
 ```
 
 ### Example: Setting up GitHub Copilot
 
 ```bash
-# From this repository
-cp -r .github /path/to/your/project/
+# Copy instructions
+mkdir -p .github/instructions
+cp ai-toolbelt/instructions/*.md .github/instructions/
 
-# Copilot will now follow the instructions in .github/instructions/
-# when you're working on features, bug fixes, tests, or code reviews
+# Copy rules into Copilot instructions
+cat ai-toolbelt/rules/*.md >> .github/copilot-instructions.md
 ```
 
-## 📝 Customization
+### Example: Using with any AI
 
-All files are markdown templates designed to be edited. Customize them to:
+```bash
+# Just reference the prompts when chatting
+cat ai-toolbelt/prompts/explain-code.md
+# Copy the content into your AI chat interface
+```
 
-- Match your team's coding standards
-- Reflect your project's specific requirements
-- Align with your organization's best practices
-- Add or remove guidelines as needed
+## 🔄 Tool Type Comparison
+
+| Tool Type | Scope | Duration | Interactivity | Best For |
+|-----------|-------|----------|---------------|----------|
+| **Commands** | Narrow | One-time | Immediate | Quick code actions |
+| **Skills** | Broad | Persistent | Contextual | Domain expertise |
+| **Instructions** | Workflow | Per-task | Guided | Complete processes |
+| **Prompts** | Focused | Per-chat | Conversational | AI interactions |
+| **Rules** | Universal | Always-on | Background | Quality standards |
 
 ## 🤝 Contributing
 
-Contributions are welcome! If you have:
+We welcome contributions! You can:
 
-- Additional commands or skills for existing editors
-- Support for new AI-enabled editors
-- Improvements to existing templates
-- Better organizational structures
+- Add new tools (commands, skills, instructions, prompts, rules)
+- Improve existing tools
+- Share editor-specific tips
+- Fix issues or typos
+- Suggest better organization
 
-Please feel free to submit a pull request.
+**To contribute:**
+1. Fork the repository
+2. Create tools in the appropriate folder
+3. Follow the format described in that folder's README
+4. Test with AI assistants
+5. Submit a pull request
+
+## 📖 Learn More
+
+- [Commands README](./commands/README.md) - Deep dive into commands
+- [Skills README](./skills/README.md) - Understanding AI skills
+- [Instructions README](./instructions/README.md) - Workflow guidance
+- [Prompts README](./prompts/README.md) - Effective prompting
+- [Rules README](./rules/README.md) - Setting standards
 
 ## 📄 License
 
 This project is designed to be freely used and modified for any purpose. Copy, adapt, and share as needed.
 
-## 🔗 Related Resources
-
-- [Cursor Documentation](https://cursor.sh/docs)
-- [GitHub Copilot Documentation](https://docs.github.com/en/copilot)
-- [Zed Editor Documentation](https://zed.dev/docs)
-- [Windsurf Documentation](https://docs.codeium.com/windsurf)
-
 ---
 
-**Note**: The templates in this repository are starting points. Adapt them to your specific project needs, team conventions, and workflow preferences. 
+**Tips:**
+- Start simple - try one or two tools first
+- Combine tools for better results (e.g., Rules + Instructions + Commands)
+- Customize tools to match your context
+- Share what works with your team
+- Iterate based on results
