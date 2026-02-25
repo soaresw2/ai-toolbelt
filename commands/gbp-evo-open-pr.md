@@ -4,13 +4,21 @@ Open a pull request with the changes made in the current branch.
 
 ## Steps
 
-1. Add and commit all changes using git. Generate a commit message based on the code changes, unless one is provided in the chat.
-2. If any issues occur when adding and committing changes -- such as linter or type-check failures -- fix them and retry.
-3. Do not create a new branch. Push the current branch to the remote.
-4. Open the PR using the template below. Mark it as ready for review and add the default labels: `ev.c` and `FT`.
+1. Add and commit all changes, generating a commit message based on the code changes, unless one is provided in the chat.
+2. Follow conventional commits guidelines:
+
+- `feat:` new feature
+- `fix:` bug fix
+- `docs:` documentation only
+- `refactor:` code change that neither fixes a bug nor adds a feature
+- `chore:` maintenance (deps, config, etc.)
+
+3. If any issues occur when adding and committing changes -- such as linter or type-check failures -- fix them and retry.
+4. Open the PR using the template below. Mark it as ready for review and add the labels based on the instructions below:
+   **type** (one of): `bug`, `documentation`, `enhancement` — infer from the commit type (`fix` → `bug`, `feat`/`refactor` → `enhancement`, `docs` → `documentation`)
+   **impact** (one of): `minor` or `major` — use `major` only for breaking changes, deprecations, or cross-divisional impact; otherwise `minor`
 5. For any template section where information is not available, fill in "N/A".
-6. Check all checkboxes in the Checklist section.
-7. If any files are attached to the context (images, videos, etc.), include them in the "Additional Context" section of the PR description.
+6. Check all checkboxes in the Checklist section by default and let the user uncheck individual ones as needed.
 
 ## PR Description Template
 
