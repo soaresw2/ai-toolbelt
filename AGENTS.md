@@ -1,0 +1,48 @@
+# AI Toolbelt Project Guardian
+
+You are working in the **ai-toolbelt** repository, a shared collection of AI instruction files organized by type. Every change must conform to the conventions below.
+
+## Repository Structure
+
+```
+commands/          Quick, focused directives (actions or persona templates)
+instructions/      Detailed workflow guidance for development processes
+rules/             Always-on standards and principles for AI interactions
+skills/            Domain expertise definitions for complex tasks
+```
+
+Each folder contains exactly **one README.md** (guidelines) and **one example file** (reference implementation). Do not add a second example file to any folder without explicit approval.
+
+## Validation Checklist
+
+When a file is added or modified, verify:
+
+1. **Correct folder**: The file belongs in the folder matching its purpose (action/prompt -> commands, workflow -> instructions, standard -> rules, expertise -> skills).
+2. **Naming convention**:
+   - commands: `kebab-case.md`
+   - instructions: `kebab-case.instructions.md`
+   - rules: `kebab-case.md`
+   - skills: `kebab-case.md`
+3. **Format**: The file is valid Markdown with a clear H1 title as the first heading.
+4. **Structure matches the folder's README guidelines**: Cross-reference the README.md in the same folder to confirm the file follows the documented structure (sections, tone, level of detail).
+5. **Single purpose**: Each file addresses one well-defined topic. If it covers multiple unrelated concerns, suggest splitting.
+6. **Actionable content**: The content is specific enough for an AI agent to follow. Avoid vague platitudes; prefer concrete steps, criteria, or examples.
+7. **Editor-agnostic**: The file content itself should not assume a specific editor. Editor-specific setup instructions belong only in folder READMEs.
+
+## Improvement Suggestions
+
+After validation, suggest improvements based on the file's title and content:
+
+- **Clarity**: Are instructions unambiguous? Could any step be misinterpreted?
+- **Completeness**: Are important edge cases, error scenarios, or quality criteria missing?
+- **Actionability**: Can an AI agent execute every step without guessing? Are success criteria defined?
+- **Conciseness**: Is there unnecessary repetition or filler that could be trimmed?
+- **Consistency**: Does the tone and depth match other files in the same folder?
+
+## README Changes
+
+If a folder README is being modified, verify it still contains:
+1. Purpose of the tool type
+2. Writing guidelines (naming, format, structure)
+3. Editor setup instructions for Cursor, VS Code, WebStorm, and Zed
+4. A pointer to the example file

@@ -1,112 +1,90 @@
 # Skills
 
-Skills are comprehensive capabilities that define how an AI agent should approach complex, multi-step tasks or domains of expertise.
+Skills are comprehensive definitions of specialized AI expertise. They describe domain knowledge, capabilities, and methodologies that enable an AI agent to handle complex, multi-step tasks in a specific area.
 
-## What are Skills?
+Skills are **primarily a Cursor concept**. Other editors do not have a direct equivalent, but skill content can be adapted into rules or instructions for those editors (see Editor Setup below).
 
-Skills are detailed specifications that enable AI agents to:
-- Understand domain-specific knowledge
-- Apply specialized techniques and methodologies
-- Handle complex, multi-faceted tasks
-- Maintain consistency across related operations
-- Follow best practices in specific areas
+## When to Use Skills
 
-Unlike commands (which are quick actions), skills define ongoing capabilities and expertise.
+Use a skill when you need:
 
-## File Format
+- Deep domain expertise for a specialized area (code review, testing, security auditing)
+- Multi-faceted capabilities that span several related tasks
+- Persistent context that applies whenever the AI works in a domain
+- A comprehensive reference the AI can draw on across multiple interactions
 
-Each skill is a Markdown file with:
-- **Filename**: Descriptive kebab-case name (e.g., `code-review.md`, `testing.md`)
-- **Title**: H1 header with the skill name
-- **Introduction**: Brief description of the skill's purpose
-- **Capabilities**: List of what the skill enables
-- **Usage**: How the skill should be applied
-- **Best Practices**: Guidelines for optimal results
+If you need a quick action, use a [command](../commands/). If you need a step-by-step workflow, use [instructions](../instructions/). If you need always-on standards, use [rules](../rules/).
 
-### Example Structure
+## Writing Guidelines
 
-```markdown
-# Skill Name
+### File Naming
 
-Brief description of this skill's purpose.
+- Use **kebab-case** with a `.md` extension: `code-review.md`, `testing.md`, `security-audit.md`
+- The name should describe the domain or area of expertise
 
-## Capabilities
+### Structure
 
-- Capability 1
-- Capability 2
-- Capability 3
+Every skill file should contain:
 
-## Usage
+1. **H1 title** -- the skill name
+2. **Introduction** -- one or two sentences describing the skill's purpose
+3. **Capabilities** -- bulleted list of what the skill enables the AI to do
+4. **Usage** -- how and when the skill should be applied (numbered steps or description)
+5. **Best Practices** -- guidelines for getting the best results from the skill
 
-When activated, this skill will:
-1. Step 1
-2. Step 2
-3. Step 3
+### Content Principles
 
-## Best Practices
+- Define **clear, comprehensive capabilities** -- the AI needs to know what it can do with this skill
+- Provide **domain context** -- include terminology, patterns, and concepts specific to the area
+- Make skills **composable** -- they should work alongside other skills, rules, and commands
+- Focus on **expertise, not process** -- skills describe what the AI knows, not step-by-step workflows (that is what instructions are for)
+- Stay **editor-agnostic** in the file content itself
 
-- Best practice 1
-- Best practice 2
+## Editor Setup
+
+### Cursor -- Primary
+
+Create a named folder for each skill inside your project:
+
+```
+[PROJECT]/.cursor/skills/<skill-name>/SKILL.md
 ```
 
-## Usage in Different Editors
+For example:
 
-### Cursor
-1. Copy skill files to `.cursor/skills/<skill-name>/` in your project
-2. Rename to `SKILL.md` within each skill folder
-3. Cursor automatically loads and applies these skills
+```
+.cursor/skills/code-review/SKILL.md
+```
 
-### GitHub Copilot
-1. Add skill content to `.github/copilot-instructions.md`
-2. Reference skills in your Copilot workspace settings
-3. Copilot uses these as context for all interactions
+Cursor automatically loads skills from this location. You can add optional YAML frontmatter:
+
+```yaml
+---
+name: code-review
+description: Comprehensive code review expertise
+---
+```
+
+Global skills (available across all projects) go in `~/.cursor/skills/`.
+
+### VS Code / WebStorm (GitHub Copilot)
+
+No direct equivalent. Embed skill content into an instruction file:
+
+```
+[PROJECT]/.github/instructions/<skill-name>.instructions.md
+```
+
+This allows Copilot to apply the expertise contextually.
 
 ### Zed
-1. Copy skill content to `.zed/settings.json` under assistant context
-2. Or create custom slash commands that reference skills
+
+No direct equivalent. Add skill content to the assistant context or save as a prompt in `[PROJECT]/.zed/prompts/` for easy reference.
 
 ### Other Editors
-- Include skill descriptions in your AI assistant's system prompts
-- Reference skills when starting complex tasks
-- Use as persistent context for your AI sessions
 
-## Available Skills
+Embed skill content into your editor's rules or instruction files. Skills are plain Markdown and can be adapted to any format.
 
-- **code-review.md** - Comprehensive code review expertise
-- **testing.md** - Software testing and quality assurance capabilities
+## Example
 
-## Creating Custom Skills
-
-To create a new skill:
-1. Identify a domain or complex task that requires specialized knowledge
-2. Create a `.md` file with a descriptive name
-3. Document the capabilities this skill provides
-4. Describe how the skill should be applied
-5. Include best practices and guidelines
-6. Consider what knowledge or context the AI needs
-7. Test the skill across different scenarios
-8. Share via pull request
-
-## Best Practices
-
-- Define clear, comprehensive capabilities
-- Provide context about when to use the skill
-- Include domain-specific terminology and concepts
-- Consider the skill's scope (not too broad, not too narrow)
-- Make skills composable (they can work together)
-- Update skills as best practices evolve
-- Include examples of the skill in action
-
-## Skills vs Commands
-
-**Use Skills when:**
-- The task requires specialized domain knowledge
-- Multiple steps or decisions are involved
-- Context needs to persist across interactions
-- You want to define ongoing AI behavior
-
-**Use Commands when:**
-- The task is quick and focused
-- It's a one-time action on specific code
-- The steps are straightforward and consistent
-- You need immediate, tactical results
+See [code-review.md](./code-review.md) for a reference implementation.

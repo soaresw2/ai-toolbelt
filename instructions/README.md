@@ -1,125 +1,79 @@
 # Instructions
 
-Instructions are context-specific guidelines that define how an AI agent should approach particular types of development tasks or workflows.
+Instructions are detailed, structured guidelines that define how an AI agent should approach a complete development workflow. They cover multi-step processes like implementing a feature, fixing a bug, or conducting a code review.
 
-## What are Instructions?
+## When to Use Instructions
 
-Instructions provide detailed, structured guidance for:
-- Specific development workflows (e.g., feature implementation, bug fixing)
-- Task-specific best practices and methodologies
-- Step-by-step approaches to common scenarios
-- Quality standards and review criteria
-- Process guidelines and checklists
+Use instructions when you need:
 
-Instructions are more prescriptive than skills and more comprehensive than commands.
+- End-to-end guidance for a development workflow
+- Step-by-step processes with phases, criteria, and checklists
+- Team alignment on how specific task types should be approached
+- Quality gates and acceptance criteria for a workflow
 
-## File Format
+If you need a quick one-off action, use a [command](../commands/). If you need always-on coding standards, use [rules](../rules/).
 
-Each instruction set is a Markdown file with:
-- **Filename**: Task-oriented kebab-case name with `.instructions.md` suffix
-- **Title**: H1 header describing the task or workflow
-- **Sections**: Organized by phase or aspect of the workflow
-- **Guidelines**: Detailed steps, criteria, or best practices
-- **Checklists**: Optional task lists for verification
+## Writing Guidelines
 
-### Example Structure
+### File Naming
 
-```markdown
-# Task Type Instructions
+- Use **kebab-case** with an `.instructions.md` suffix: `feature.instructions.md`, `bug-fix.instructions.md`
+- The name should describe the workflow or task type
 
-Brief introduction to the task or workflow.
+### Structure
 
-## Phase 1
+Every instruction file should contain:
 
-Guidelines for phase 1:
-- Guideline 1
-- Guideline 2
+1. **H1 title** -- the workflow name
+2. **Introduction** -- brief description of when and why to use this workflow
+3. **Phases or sections** -- organized chronologically or by concern (planning, implementation, testing, review)
+4. **Steps within each phase** -- numbered or bulleted, specific and actionable
+5. **Checklist** (recommended) -- a summary checklist at the end for quick verification
 
-## Phase 2
+### Content Principles
 
-Steps for phase 2:
-1. Step 1
-2. Step 2
+- Be **prescriptive** -- instructions should leave little room for interpretation
+- Organize **logically** -- chronological order or by area of concern
+- Include both **what** to do and **why** (rationale helps the AI make judgment calls)
+- Add **quality criteria** so the AI knows what "done" looks like
+- Keep each file focused on **one workflow**
+- Stay **editor-agnostic** in the file content itself
 
-## Best Practices
+## Editor Setup
 
-- Best practice 1
-- Best practice 2
+### VS Code / WebStorm (GitHub Copilot) -- Primary
 
-## Checklist
+This is the tool type that maps most directly to GitHub Copilot's instruction system. Copy instruction files to:
 
-- [ ] Item 1
-- [ ] Item 2
+```
+[PROJECT]/.github/instructions/
 ```
 
-## Usage in Different Editors
+Copilot auto-applies instructions contextually. You can add YAML frontmatter to control when an instruction applies:
 
-### GitHub Copilot (Primary Use Case)
-1. Copy instruction files to `.github/instructions/` in your project
-2. Copilot automatically uses these as context
-3. Instructions apply when working on relevant tasks
-4. Name files clearly so Copilot can match them to contexts
+```yaml
+---
+applyTo: "src/**/*.ts"
+---
+```
+
+This works across VS Code, WebStorm, and all JetBrains IDEs with the Copilot plugin.
 
 ### Cursor
-1. Copy to `.cursor/` or reference in custom commands
-2. Use as templates for complex workflows
-3. Reference in agent rules or context
 
-### VSCode with Copilot
-1. Place in `.github/instructions/`
-2. Copilot reads and applies contextually
-3. Works across VSCode, Visual Studio, and JetBrains IDEs
+Cursor does not have a direct "instructions" concept. Adapt instruction content into one of:
+
+- **Rules**: `[PROJECT]/.cursor/rules/<name>.mdc` with glob patterns to auto-apply when editing matching files
+- **Commands**: `[PROJECT]/.cursor/commands/<name>.md` to invoke the workflow manually via `/` in chat
+
+### Zed
+
+No direct equivalent. Reference instruction content in the assistant panel or paste relevant sections into chat when starting a workflow.
 
 ### Other Editors
-- Use as reference documentation for AI-assisted workflows
-- Copy relevant sections into AI chat when starting tasks
-- Maintain as team standards documentation
 
-## Available Instructions
+Use instruction files as reference documentation. Paste the relevant sections into your AI assistant's chat when beginning a task.
 
-- **acceptance.instructions.md** - Guidelines for writing acceptance tests
-- **bug-fix.instructions.md** - Systematic approach to fixing bugs
-- **code-review.instructions.md** - Standards for conducting code reviews
-- **feature.instructions.md** - Process for implementing new features
+## Example
 
-## Creating Custom Instructions
-
-To create new instructions:
-1. Identify a recurring development workflow or task type
-2. Create a `.instructions.md` file named after the task
-3. Structure the content by phases, steps, or aspects
-4. Include specific, actionable guidelines
-5. Add quality criteria or checklists
-6. Consider edge cases and common pitfalls
-7. Test with your team's AI tools
-8. Iterate based on feedback
-9. Share via pull request
-
-## Best Practices
-
-- Be specific and prescriptive
-- Structure logically (chronologically or by aspect)
-- Include both "what" and "why"
-- Provide examples where helpful
-- Use checklists for verification steps
-- Keep instructions focused on one workflow
-- Update as processes evolve
-- Make them team-agnostic when possible
-
-## Instructions vs Skills vs Commands
-
-**Use Instructions when:**
-- Defining a complete workflow or process
-- Multiple steps span different activities
-- Quality standards need to be specified
-- Team alignment on approach is important
-
-**Use Skills when:**
-- Defining ongoing AI capabilities
-- Domain expertise is needed
-- Context persists across multiple tasks
-
-**Use Commands when:**
-- Quick, focused actions are needed
-- Operating on specific code selections
-- One-time tactical operations
+See [feature.instructions.md](./feature.instructions.md) for a reference implementation.

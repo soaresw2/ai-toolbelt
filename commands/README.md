@@ -1,77 +1,83 @@
 # Commands
 
-Commands are quick, actionable instructions that tell an AI agent to perform specific tasks on selected code or within your project.
+Commands are quick, focused directives that tell an AI agent to perform a specific task. They can be action-oriented ("write tests for this code") or persona/template-style ("you are an expert code reviewer -- analyze this code"). This folder also covers what some editors call "prompts."
 
-## What are Commands?
+## When to Use Commands
 
-Commands are short, focused directives that can be invoked through your code editor's AI interface. They typically:
-- Operate on selected code or the current file
-- Perform a single, well-defined task
-- Provide immediate, actionable results
-- Can be chained or combined for complex workflows
+Use a command when you need:
 
-## File Format
+- A single, well-defined action on selected code or a file
+- A reusable template for a common AI interaction
+- An AI persona for a specific type of task
+- Immediate, tactical results without multi-step workflows
 
-Each command is a standalone Markdown file with:
-- **Filename**: Descriptive kebab-case name (e.g., `write-tests.md`, `refactor-code.md`)
-- **Title**: H1 header with the command name
-- **Description**: Clear explanation of what the command does
-- **Guidelines**: Bullet points or numbered steps describing how to execute the task
+If you need multi-step workflow guidance, use [instructions](../instructions/). If you need always-on standards, use [rules](../rules/).
 
-### Example Structure
+## Writing Guidelines
 
-```markdown
-# Command Name
+### File Naming
 
-Brief description of what this command does.
+- Use **kebab-case** with a `.md` extension: `write-tests.md`, `explain-code.md`, `add-error-handling.md`
+- The filename should clearly describe what the command does
 
-## Guidelines/Steps
+### Structure
 
-- Guideline 1
-- Guideline 2
-- Guideline 3
-```
+Every command file should contain:
 
-## Usage in Different Editors
+1. **H1 title** -- the command name, matching the filename in natural language
+2. **Brief description** -- one or two sentences explaining what the command does
+3. **Guidelines or steps** -- bullet points or numbered steps the AI should follow
+
+Optional sections:
+
+- **Output format** -- if the command should produce a specific format
+- **Examples** -- sample input/output to clarify expectations
+
+### Content Principles
+
+- Keep each command focused on **one task**
+- Use **imperative language** ("Write...", "Analyze...", "Refactor...")
+- Be **specific** -- vague commands produce vague results
+- Include **constraints** (e.g., "follow the project's existing test patterns")
+- Stay **editor-agnostic** in the file content itself; editor-specific setup goes in this README
+
+## Editor Setup
 
 ### Cursor
-1. Copy command files to `.cursor/commands/` in your project
-2. Access via Cursor's command palette
-3. Select code and invoke the command
 
-### GitHub Copilot (VSCode, JetBrains, Visual Studio)
-1. Copy command files to `.github/copilot-commands/` or reference in chat
-2. Use as reference prompts in Copilot Chat
-3. Mention the command name in your requests
+Copy command files to your project:
+
+```
+[PROJECT]/.cursor/commands/
+```
+
+Commands are invokable via `/` in Cursor's chat panel. Both project-level (`.cursor/commands/`) and global (`~/.cursor/commands/`) locations are supported.
+
+### VS Code (GitHub Copilot)
+
+VS Code does not have a dedicated commands folder. Instead:
+
+- Paste command content directly into **Copilot Chat**
+- Or save as an instruction file at `[PROJECT]/.github/instructions/<name>.instructions.md` with a YAML frontmatter `applyTo` glob so Copilot applies it contextually
+
+### WebStorm / JetBrains (GitHub Copilot)
+
+Same as VS Code -- Copilot reads `.github/instructions/` across all JetBrains IDEs.
+
+### Zed
+
+Copy command files to:
+
+```
+[PROJECT]/.zed/prompts/
+```
+
+Zed surfaces these as "prompts" in the assistant panel. The file format is the same plain Markdown.
 
 ### Other Editors
-- Use as reference templates when prompting your AI assistant
-- Copy the content into your editor's AI chat or prompt interface
-- Adapt the format to your editor's specific requirements
 
-## Available Commands
+Paste the command content into your AI assistant's chat interface. Commands are plain Markdown and work with any AI tool.
 
-- **write-tests.md** - Generate comprehensive unit tests for selected code
-- **refactor-code.md** - Improve code quality and structure while maintaining functionality
-- **add-error-handling.md** - Add robust error handling to code
-- **document-code.md** - Generate documentation for code
-- **optimize-performance.md** - Analyze and optimize code performance
+## Example
 
-## Creating Custom Commands
-
-To create a new command:
-1. Create a new `.md` file with a descriptive name
-2. Add a clear title and description
-3. List specific guidelines or steps
-4. Keep it focused on a single task
-5. Test it with your AI assistant
-6. Share it back to this repository via pull request
-
-## Best Practices
-
-- Keep commands focused on a single task
-- Use clear, actionable language
-- Provide specific guidelines rather than vague instructions
-- Include examples when helpful
-- Consider edge cases and error scenarios
-- Make commands editor-agnostic when possible
+See [write-tests.md](./write-tests.md) for a reference implementation.

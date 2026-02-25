@@ -1,177 +1,122 @@
 # Rules
 
-Rules are fundamental principles and standards that govern how AI should assist with code across all tasks and interactions.
+Rules are always-on standards and principles that govern how AI should assist with code across all tasks and interactions. They define the baseline expectations for code quality, security, testing, and other non-negotiable concerns.
 
-## What are Rules?
+Rules are the **most universally supported** tool type -- virtually every AI-enabled editor has a mechanism for them.
 
-Rules define overarching guidelines that:
-- Apply universally across all AI interactions
-- Establish coding standards and best practices
-- Set quality expectations and requirements
-- Define security and safety constraints
-- Provide consistent behavior guardrails
+## When to Use Rules
 
-Rules are the most foundational tool type - they set the baseline for all AI assistance.
+Use rules when you need:
 
-## File Format
+- Universal coding standards applied to every AI interaction
+- Security, performance, or quality constraints that must always hold
+- Consistent baseline behavior regardless of the specific task
+- Non-negotiable requirements (input validation, error handling patterns, naming conventions)
 
-Each rules file is a Markdown document with:
-- **Filename**: Descriptive kebab-case name (e.g., `general-coding-rules.md`, `security-rules.md`)
-- **Title**: H1 header with the rules category
-- **Sections**: Organized by topic or domain
-- **Rules**: Clear, enforceable statements
-- **Format**: Can use bullets, numbered lists, or subsections
+If you need task-specific workflow guidance, use [instructions](../instructions/). If you need one-off actions, use [commands](../commands/).
 
-### Example Structure
+## Writing Guidelines
 
-```markdown
-# Rule Category Name
+### File Naming
 
-## Topic Area 1
+- Use **kebab-case** with a `.md` extension: `general-coding-rules.md`, `security-rules.md`
+- The name should describe the category or domain the rules cover
 
-- Rule 1
-- Rule 2
-- Rule 3
+### Structure
 
-## Topic Area 2
+Every rules file should contain:
 
-- Rule 1
-- Rule 2
+1. **H1 title** -- the rules category
+2. **Sections by topic** -- group related rules under H2 headings (e.g., "Code Style," "Security," "Testing")
+3. **Rules as bullet points** -- clear, enforceable statements within each section
 
-## Principles
+### Content Principles
 
-- Overarching principle 1
-- Overarching principle 2
-```
+- Use **"must"** and **"must not"** rather than "should" or "consider" -- rules are requirements, not suggestions
+- Keep each rule **specific and verifiable** -- an AI (or human) should be able to check compliance
+- Provide **brief rationale** for non-obvious rules
+- Organize by **topic** so rules are easy to find and reference
+- Avoid overly prescriptive rules that constrain the AI unnecessarily
+- Stay **editor-agnostic** in the file content itself
 
-## Usage in Different Editors
+## Editor Setup
 
-### Windsurf (Codeium)
-1. Copy rules to `windsurf/.windsurfrules` in your project
-2. Windsurf automatically applies these rules
-3. Rules affect all AI suggestions and completions
+Rules have the broadest editor support of any tool type.
 
 ### Cursor
-1. Add rules to `.cursorrules` file in project root
-2. Or include in `.cursor/rules/`
-3. Cursor uses these as global context
 
-### GitHub Copilot
-1. Include in `.github/copilot-instructions.md`
-2. Or add to workspace settings
-3. Rules apply across all Copilot interactions
+Adapt rule content into Cursor's `.mdc` format with YAML frontmatter:
 
-### Other Editors
-- Add to project documentation
-- Include in AI system prompts or settings
-- Reference when onboarding new AI tools
-- Use as code review checklist
+```
+[PROJECT]/.cursor/rules/<name>.mdc
+```
 
-## Available Rules
+Example frontmatter for always-on rules:
 
-- **general-coding-rules.md** - Universal coding standards covering:
-  - Code style and quality
-  - Testing requirements
-  - Error handling
-  - Security practices
-  - Performance considerations
-  - Documentation standards
-  - Git practices
-  - General principles (SOLID, DRY, KISS, YAGNI)
+```yaml
+---
+description: General coding standards
+alwaysApply: true
+---
+```
 
-## Creating Custom Rules
+You can also scope rules to specific files using `globs`:
 
-To create new rules:
-1. Identify a domain or aspect that needs consistent standards
-2. Create a `.md` file with a descriptive name
-3. Organize rules by topic or category
-4. Write clear, actionable rules (not suggestions)
-5. Focus on "must" and "must not" rather than "should"
-6. Include rationale for non-obvious rules
-7. Consider security, performance, and maintainability
-8. Test that AI assistants can follow the rules
-9. Update as standards evolve
-10. Share via pull request
+```yaml
+---
+description: React component standards
+globs: src/components/**/*.tsx
+---
+```
 
-## Best Practices
+### VS Code / WebStorm (GitHub Copilot)
 
-- Make rules clear and unambiguous
-- Focus on important, enforceable standards
-- Organize logically by topic
-- Avoid overly prescriptive rules that limit creativity
-- Include security and safety rules prominently
-- Update regularly as best practices change
-- Keep rules concise (AI has token limits)
-- Consider team consensus for custom rules
-- Document exceptions when necessary
+Copy rule content into:
 
-## Types of Rules to Consider
+```
+[PROJECT]/.github/copilot-instructions.md
+```
 
-### Code Quality
-- Naming conventions
-- Code organization
-- Complexity limits
-- Documentation requirements
+This single file is automatically read by Copilot in VS Code, WebStorm, and all JetBrains IDEs. All content in this file applies to every Copilot interaction in the project.
 
-### Security
-- Input validation
-- Authentication/authorization
-- Data protection
-- Vulnerability prevention
+### Zed
 
-### Testing
-- Coverage requirements
-- Testing standards
-- Test organization
+Add rule content to assistant context in:
 
-### Performance
-- Optimization guidelines
-- Resource management
-- Scalability considerations
+```
+[PROJECT]/.zed/settings.json
+```
 
-### Process
-- Git workflow
-- Code review standards
-- Deployment practices
+under the assistant configuration section. Refer to Zed's documentation for the exact schema.
 
-## Rules vs Other Tool Types
+### Windsurf
 
-**Use Rules when:**
-- Setting universal standards for all code
-- Defining non-negotiable requirements
-- Establishing security constraints
-- Creating consistent baseline behavior
+Copy rule content into:
 
-**Use Instructions when:**
-- Defining specific workflows
-- Providing task-specific guidance
-- Describing multi-step processes
+```
+[PROJECT]/.windsurfrules
+```
 
-**Use Skills when:**
-- Enabling domain expertise
-- Defining complex capabilities
+Windsurf automatically applies this file to all AI interactions in the project.
 
-**Use Commands when:**
-- Creating specific actions
-- Enabling one-time operations
+### Cline
 
-**Use Prompts when:**
-- Starting AI conversations
-- Defining interaction templates
+Copy rule content into the project rules directory:
 
-## Combining Rules with Other Tools
+```
+[PROJECT]/.clinerules/
+```
 
-Rules work best when combined with other tool types:
-- **Rules + Instructions**: Rules ensure quality while instructions guide workflow
-- **Rules + Skills**: Skills apply expertise within the bounds of rules
-- **Rules + Commands**: Commands execute while respecting rules
-- **Rules + Prompts**: Prompts can reference rules for context
+### Codex CLI
 
-## Rule Enforcement
+Embed rule content in:
 
-Remember that AI assistants:
-- Will try to follow rules but may make mistakes
-- Work best with clear, specific rules
-- May need reminders for complex or numerous rules
-- Benefit from examples of rule application
-- Should be reviewed by humans for compliance
+```
+[PROJECT]/AGENTS.md
+```
+
+Codex auto-discovers `AGENTS.md` from the git root.
+
+## Example
+
+See [general-coding-rules.md](./general-coding-rules.md) for a reference implementation.
