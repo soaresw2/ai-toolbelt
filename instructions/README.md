@@ -76,4 +76,4 @@ Use instruction files as reference documentation. Paste the relevant sections in
 
 ## Example
 
-See [feature.instructions.md](./feature.instructions.md) for a reference implementation.
+See [_example-feature.instructions.md](./_example-feature.instructions.md) for a reference implementation. This file exists solely to illustrate the expected format -- it is not intended to be copied into your project as-is.

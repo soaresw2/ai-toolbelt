@@ -1,3 +1,6 @@
+> **This is an example file.** It demonstrates the expected format for this folder.
+> Do not copy it as-is into your project -- use it as a reference when writing your own.
+
 # Code Review Skill
 
 This skill enables the AI to perform thorough code reviews.

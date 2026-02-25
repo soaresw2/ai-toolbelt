@@ -16,7 +16,7 @@ rules/             Always-on standards and principles for AI interactions
 skills/            Domain expertise definitions for complex tasks
 ```
 
-Each folder contains exactly **one README.md** (guidelines) and **one example file** (reference implementation). Do not add a second example file to any folder without explicit approval.
+Each folder contains exactly **one README.md** (guidelines) and **one example file** prefixed with `_example-` (reference implementation only -- not for direct use). Do not add a second example file to any folder without explicit approval. New files contributed by users should **not** use the `_example-` prefix.
 
 ## Validation Checklist
 

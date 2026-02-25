@@ -80,4 +80,4 @@ Paste the command content into your AI assistant's chat interface. Commands are 
 
 ## Example
 
-See [write-tests.md](./write-tests.md) for a reference implementation.
+See [_example-write-tests.md](./_example-write-tests.md) for a reference implementation. This file exists solely to illustrate the expected format -- it is not intended to be copied into your project as-is.

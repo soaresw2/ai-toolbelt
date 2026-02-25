@@ -6,10 +6,10 @@ A shared collection of AI instruction files for development teams. Browse by too
 
 | Folder | Purpose | When to Use | Example |
 |--------|---------|-------------|---------|
-| [commands/](./commands/) | Quick, focused directives for specific code actions or AI personas | You need a one-off action ("write tests") or a reusable chat template ("you are an expert reviewer") | `write-tests.md` |
-| [instructions/](./instructions/) | Detailed workflow guidance for complete development processes | You need end-to-end steps for a task type like feature implementation or bug fixing | `feature.instructions.md` |
-| [rules/](./rules/) | Always-on standards and principles governing all AI interactions | You need universal coding standards, security constraints, or quality baselines | `general-coding-rules.md` |
-| [skills/](./skills/) | Domain expertise definitions for complex, multi-step tasks | You need deep, persistent AI expertise in an area like code review or testing | `code-review.md` |
+| [commands/](./commands/) | Quick, focused directives for specific code actions or AI personas | You need a one-off action ("write tests") or a reusable chat template ("you are an expert reviewer") | `_example-write-tests.md` |
+| [instructions/](./instructions/) | Detailed workflow guidance for complete development processes | You need end-to-end steps for a task type like feature implementation or bug fixing | `_example-feature.instructions.md` |
+| [rules/](./rules/) | Always-on standards and principles governing all AI interactions | You need universal coding standards, security constraints, or quality baselines | `_example-general-coding-rules.md` |
+| [skills/](./skills/) | Domain expertise definitions for complex, multi-step tasks | You need deep, persistent AI expertise in an area like code review or testing | `_example-code-review.md` |
 
 ### How to Choose
 
@@ -60,7 +60,7 @@ These files instruct the AI to verify that new or modified files conform to the 
 4. The project's global instruction files will help your AI assistant validate the change
 5. Submit a pull request
 
-Each folder contains exactly one example file as a reference implementation. When contributing, add new files alongside the existing example -- do not replace it.
+Each folder contains one example file (prefixed with `_example-`) as a format reference. These are **not** meant to be copied as-is into your project. When contributing, add new files alongside the existing example -- do not replace it.
 
 ## Repository Structure
 
@@ -68,16 +68,16 @@ Each folder contains exactly one example file as a reference implementation. Whe
 ai-toolbelt/
   commands/
     README.md
-    write-tests.md
+    _example-write-tests.md
   instructions/
     README.md
-    feature.instructions.md
+    _example-feature.instructions.md
   rules/
     README.md
-    general-coding-rules.md
+    _example-general-coding-rules.md
   skills/
     README.md
-    code-review.md
+    _example-code-review.md
   .cursor/rules/
     project-guardian.mdc
   .github/
